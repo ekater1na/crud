@@ -30,14 +30,38 @@ function insertRecord(req, res) {
                     employee: req.body
                 });
             }
-            else
+            else 
                 console.log('Error during record insertion : ' + err);
         }
     });
 }
 
 router.get('/list', (req, res) => {
-    res.json('from list')
+    Employee.find((err, docs) => {
+        if (!err) {
+            res.render("employee/list", {
+                list: docs
+            });
+        } else {
+            console.log("Error in retrieving employee list :" + err);
+            
+        }
+    });
 });
+
+function handleValidationError(err, body) {
+    for (field in err.errors) {
+        switch (err.errors[field].path) {
+            case 'fullName':
+                body['fullNameError'] = err.errors[field].message;
+                break;
+            case 'email':
+                body['emailError'] = err.errors[field].message;
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 module.exports = router;
