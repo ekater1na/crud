@@ -17,8 +17,6 @@
   "bugs": {
     "url": "https://github.com/ekater1na/crud/issues"
   },
-  "homepage": "https://github.com/ekater1na/crud#readme",
-  
   "lint-staged": {
     "*.js": [
       "npm run lint",
@@ -38,6 +36,6 @@
     "eslint-plugin-prettier": "3.1.1",
     "lint-staged": "9.5.0",
     "nodemon": "2.0.2",
-    "prettier": "1.19.1",
+    "prettier": "1.19.1"
   }
 }
